@@ -8,5 +8,4 @@ RUN apk --update add --virtual build-dependencies python3-dev libffi-dev build-b
   && pip3 install --no-cache-dir --upgrade pip \
   && pip install --no-cache-dir -r requirements.txt \
   && apk del build-dependencies \
-  && ln -sf /usr/bin/pip3 /usr/bin/pip \
   && ln -sf /usr/bin/python3 /usr/bin/python
