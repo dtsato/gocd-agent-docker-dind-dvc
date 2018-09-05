@@ -7,5 +7,6 @@ RUN apk --no-cache add python3 openssl ca-certificates openblas-dev gfortran
 RUN apk --update add --virtual build-dependencies python3-dev libffi-dev build-base linux-headers \
   && pip3 install --no-cache-dir --upgrade pip \
   && pip install --no-cache-dir -r requirements.txt \
+  && pip install scikit-learn \
   && apk del build-dependencies \
   && ln -sf /usr/bin/python3 /usr/bin/python
