@@ -1,5 +1,5 @@
-dvc[gs]>=0.23.2
-flask>=1.0.2
+dvc[gs]>=0.35.7
 numpy>=1.15.4
 pandas>=0.23.4
 scikit-learn>=0.20.2
+pytest>=3.7.4

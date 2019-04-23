@@ -1,4 +1,4 @@
-FROM gocd/gocd-agent-docker-dind:v18.12.0
+FROM gocd/gocd-agent-docker-dind:v19.2.0
 
 COPY requirements.txt .
 
