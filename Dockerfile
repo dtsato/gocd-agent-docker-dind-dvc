@@ -1,15 +1,18 @@
-FROM gocd/gocd-agent-docker-dind:v19.9.0
+FROM continuumio/miniconda3:4.7.12-alpine AS conda
+
+MAINTAINER Danilo Sato <dtsato@gmail.com>
 
 COPY requirements.txt .
 
 USER root
 
-RUN apk --no-cache add python3 openssl ca-certificates openblas-dev gfortran
-RUN apk --update add --virtual build-dependencies python3-dev libffi-dev build-base linux-headers zlib-dev jpeg-dev freetype-dev libpng-dev \
-  && pip3 install --no-cache-dir --upgrade pip \
-  && pip install --no-cache-dir numpy==1.17.4 Cython==0.29.14 \
-  && pip install --no-cache-dir -r requirements.txt \
-  && apk del build-dependencies \
-  && ln -sf /usr/bin/python3 /usr/bin/python
+ENV PATH=$PATH:/opt/conda/bin
 
-USER go
+RUN pip install --no-cache-dir --no-compile -r requirements.txt \
+  && conda list && conda clean -tipy
+
+FROM gocd/gocd-agent-docker-dind:v19.9.0
+COPY --from=conda /opt/conda /opt/conda
+ENV PATH=$PATH:/opt/conda/vin
+RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate base" >> ~/.bashrc
