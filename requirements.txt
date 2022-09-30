@@ -7,4 +7,4 @@ flask==1.1.1
 mlflow==1.4.0
 lime==0.1.1.36
 fluent-logger==0.9.4
-joblib==0.14.0
+joblib==1.2.0
