@@ -4,7 +4,7 @@ pandas==0.25.3
 scikit-learn==0.21.3
 pytest==5.3.0
 flask==1.1.1
-mlflow==1.4.0
+mlflow==2.3.1
 lime==0.1.1.36
 fluent-logger==0.9.4
 joblib==0.14.0
